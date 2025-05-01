@@ -1,15 +1,25 @@
 class Complex:
-    def __init__(self, a,b):
-        self.a=a 
-        self.b=b
+    def __init__(self, real, imaginary):
+        self.real=real
+        self.imaginary=imaginary
+
+    def __add__(self, operand):
+        new_real = self.real + operand.real
+        new_imaginary = self.imaginary + operand.imaginary
+        return Complex(new_real, new_imaginary)
+    
+    def __subtract__(self, operand):
+        new_real = self.real - operand.real
+        new_imaginary = self.imaginary - operand.imaginary
+        return Complex(new_real, new_imaginary)
 
     def __mul__(self, operand):
-        new_a = (self.a*operand.a)-(self.b*operand.b)
-        new_b = (self.a*operand.b)+(self.b+operand.a)
-        return Complex(new_a, new_b)
+        new_real = (self.real*operand.imaginary)-(self.real*operand.imaginary)
+        new_imaginary = (self.real*operand.imaginary)+(self.real+operand.imaginary)
+        return Complex(new_real, new_imaginary)
 
     def __str__(self):
-        return f"{self.a} + {self.b}i"
+        return f"{self.real} + {self.imaginary}i"
 
 A=Complex(1,2)
 B=Complex(4,5)
